@@ -17,7 +17,7 @@ function createModal(html, className, onclose, canclose) {
         document.dispatchEvent(event);
         document.removeEventListener('keydown', escapeEvent);
         if(onclose) onclose();
-        let modals = document.getElementsByClassName('modal');
+        let modals = document.getElementsByClassName('otd-modal');
         if(modals.length === 0) {
             document.body.style.overflowY = 'auto';
         }
@@ -125,8 +125,9 @@ style.innerHTML = /*css*/`
     animation: opac 0.2s ease-in-out;
 }
 html.dark .otd-modal-content {
-    background-color: #15202b;
-    color: white;
+    background-color: #141414;
+    color: #e8e8e8;
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 .otd-notification-warning > .otd-notification-content::before {
     content: "⚠️";
@@ -164,6 +165,10 @@ html.dark .otd-modal-content {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+html.dark .otd-modal-close:hover,
+html.dark .otd-modal-close:focus {
+    color: #e8e8e8;
 }
 `;
 

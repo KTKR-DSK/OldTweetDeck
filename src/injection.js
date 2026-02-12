@@ -17,7 +17,7 @@ window.addEventListener('message', e => {
     } else if(e.data.cookie) {
         cookie = e.data.cookie;
     } else if(e.data.token) {
-        console.log("got otdtoken", e.data.token);
+        console.log("got otdtoken");
         otdtoken = e.data.token;
     }
 });
@@ -26,6 +26,8 @@ window.postMessage('cookie', '*');
 window.postMessage('getotdtoken', '*');
 
 async function main() {
+    const settledText = entry => (entry && entry.status === "fulfilled" ? entry.value : "");
+
     let html = await fetch(chrome.runtime.getURL('/files/index.html')).then(r => r.text());
     document.documentElement.innerHTML = html;
 
@@ -63,6 +65,8 @@ async function main() {
             (remote_bundle_css_req.value && remote_bundle_css_req.value.ok) ||
             (remote_twitter_text_req.value && remote_twitter_text_req.value.ok)
         ) {
+            const getRemoteText = req =>
+                req && req.value && req.value.ok ? req.value.text() : Promise.resolve("");
             const [
                 remote_challenge_js,
                 remote_interception_js,
@@ -71,12 +75,12 @@ async function main() {
                 remote_bundle_css,
                 remote_twitter_text,
             ] = await Promise.allSettled([
-                remote_challenge_js_req.value.text(),
-                remote_interception_js_req.value.text(),
-                remote_vendor_js_req.value.text(),
-                remote_bundle_js_req.value.text(),
-                remote_bundle_css_req.value.text(),
-                remote_twitter_text_req.value.text(),
+                getRemoteText(remote_challenge_js_req),
+                getRemoteText(remote_interception_js_req),
+                getRemoteText(remote_vendor_js_req),
+                getRemoteText(remote_bundle_js_req),
+                getRemoteText(remote_bundle_css_req),
+                getRemoteText(remote_twitter_text_req),
             ]);
 
             if (
@@ -138,27 +142,54 @@ async function main() {
     }
 
     let challenge_js_script = document.createElement("script");
-    challenge_js_script.innerHTML = challenge_js.value.replaceAll('SOLVER_URL', chrome.runtime.getURL("solver.html"));
+    challenge_js_script.innerHTML = settledText(challenge_js).replaceAll('SOLVER_URL', chrome.runtime.getURL("solver.html"));
     document.head.appendChild(challenge_js_script);
 
     let interception_js_script = document.createElement("script");
-    interception_js_script.innerHTML = interception_js.value;
+    interception_js_script.innerHTML = settledText(interception_js);
     document.head.appendChild(interception_js_script);
 
     let bundle_css_style = document.createElement("style");
-    bundle_css_style.innerHTML = bundle_css.value;
+    bundle_css_style.id = "otd-bundle-css";
+    bundle_css_style.innerHTML = settledText(bundle_css);
     document.head.appendChild(bundle_css_style);
 
+    // Custom theme override
+    let custom_theme_css = await fetch(chrome.runtime.getURL("/files/custom-theme.css"))
+        .then(r => r.text()).catch(() => "");
+    let custom_css_style = null;
+    if (custom_theme_css) {
+        custom_css_style = document.createElement("style");
+        custom_css_style.id = "otd-custom-theme-css";
+        custom_css_style.innerHTML = custom_theme_css;
+        document.head.appendChild(custom_css_style);
+    }
+    let isReorderingCustomTheme = false;
+    const ensureCustomThemeIsLast = () => {
+        if (!custom_css_style || !document.head) return;
+        if (document.head.lastElementChild === custom_css_style) return;
+        isReorderingCustomTheme = true;
+        document.head.appendChild(custom_css_style);
+        isReorderingCustomTheme = false;
+    };
+    ensureCustomThemeIsLast();
+    if (document.head && custom_css_style) {
+        new MutationObserver(() => {
+            if (isReorderingCustomTheme) return;
+            ensureCustomThemeIsLast();
+        }).observe(document.head, { childList: true });
+    }
+
     let vendor_js_script = document.createElement("script");
-    vendor_js_script.innerHTML = vendor_js.value;
+    vendor_js_script.innerHTML = settledText(vendor_js);
     document.head.appendChild(vendor_js_script);
 
     let bundle_js_script = document.createElement("script");
-    bundle_js_script.innerHTML = bundle_js.value;
+    bundle_js_script.innerHTML = settledText(bundle_js);
     document.head.appendChild(bundle_js_script);
 
     let twitter_text_script = document.createElement("script");
-    twitter_text_script.innerHTML = twitter_text.value;
+    twitter_text_script.innerHTML = settledText(twitter_text);
     document.head.appendChild(twitter_text_script);
 
     (async () => {
@@ -183,7 +214,7 @@ async function main() {
         }
     })();
 
-    let int = setTimeout(function() {
+    let int = setInterval(function() {
         let badBody = document.querySelector('body:not(#injected-body)');
         if (badBody) {
             let badHead = document.querySelector('head:not(#injected-head)');

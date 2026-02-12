@@ -1,0 +1,667 @@
+/*
+ * OldTweetDeck Custom Dark Theme
+ * Monochrome + Gold Accent Override
+ *
+ * Injected AFTER bundle.css via injection.js.
+ * All rules scoped to :is(html.dark, body.dark) to avoid affecting light mode.
+ */
+
+/* ===== Font ===== */
+:is(html.dark, body.dark) {
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+:is(html.dark, body.dark) body,
+:is(html.dark, body.dark) input,
+:is(html.dark, body.dark) textarea,
+:is(html.dark, body.dark) select,
+:is(html.dark, body.dark) button {
+    font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* ===== Selection ===== */
+:is(html.dark, body.dark) ::selection {
+    background-color: #3d3526 !important;
+    color: #e8e8e8 !important;
+}
+
+/* ===== Body / App backgrounds ===== */
+:is(html.dark, body.dark) body,
+:is(html.dark, body.dark) .app-columns-container,
+:is(html.dark, body.dark) .app-content {
+    background-color: #0a0a0a !important;
+}
+
+/* ===== Text colors ===== */
+:is(html.dark, body.dark) {
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .txt-mute,
+:is(html.dark, body.dark) .txt-size-variable--12,
+:is(html.dark, body.dark) .account-summary-text,
+:is(html.dark, body.dark) .tweet-timestamp,
+:is(html.dark, body.dark) .txt-ellipsis.username {
+    color: #8a8a8a !important;
+}
+:is(html.dark, body.dark) .username,
+:is(html.dark, body.dark) .tweet-footer,
+:is(html.dark, body.dark) .attribution {
+    color: #666666 !important;
+}
+
+/* ===== Links ===== */
+:is(html.dark, body.dark) a,
+:is(html.dark, body.dark) .url-ext {
+    color: #c9a96e !important;
+}
+:is(html.dark, body.dark) a:hover,
+:is(html.dark, body.dark) .url-ext:hover {
+    color: #d4bc8a !important;
+}
+
+/* ===== Column ===== */
+:is(html.dark, body.dark) .column {
+    background-color: #141414 !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .column-header,
+:is(html.dark, body.dark) .column-header-temp {
+    background-color: #1e1e1e !important;
+    border-bottom-color: #2a2a2a !important;
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .column-header-title {
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .column-scroller {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .column-options {
+    background-color: #1e1e1e !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .column-navigator {
+    background-color: #141414 !important;
+    border-color: #2a2a2a !important;
+}
+
+/* ===== Stream items (tweets) ===== */
+:is(html.dark, body.dark) .stream-item {
+    border-bottom-color: #2a2a2a !important;
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .stream-item.is-selected-tweet,
+:is(html.dark, body.dark) .stream-item:focus {
+    background-color: #1e1e1e !important;
+}
+:is(html.dark, body.dark) .stream-item:hover {
+    background-color: #1a1a1a !important;
+}
+:is(html.dark, body.dark) .tweet-text,
+:is(html.dark, body.dark) .tweet-body {
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .fullname {
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .quoted-tweet {
+    border-color: #2a2a2a !important;
+    background-color: #1a1a1a !important;
+    color: #8a8a8a !important;
+}
+:is(html.dark, body.dark) .stream-item .item-box,
+:is(html.dark, body.dark) .stream-item .js-stream-item-content,
+:is(html.dark, body.dark) .stream-item .tweet {
+    background-color: transparent !important;
+}
+:is(html.dark, body.dark) .stream-item .account-link:not(:hover):not(:focus),
+:is(html.dark, body.dark) .stream-item .tweet-context a:not(:hover):not(:focus),
+:is(html.dark, body.dark) .stream-item .tweet-timestamp a:not(:hover):not(:focus),
+:is(html.dark, body.dark) .stream-item .quoted-tweet a:not(:hover):not(:focus),
+:is(html.dark, body.dark) .stream-item .quoted-tweet .link-complex-target {
+    color: #8f8f8f !important;
+}
+
+/* ===== App navigator / sidebar ===== */
+:is(html.dark, body.dark) .app-navigator {
+    background-color: #0a0a0a !important;
+    border-right-color: #1a1a1a !important;
+}
+:is(html.dark, body.dark) .app-navigator .Button:hover {
+    background-color: #1e1e1e !important;
+}
+:is(html.dark, body.dark) .app-header {
+    background-color: #0a0a0a !important;
+    border-bottom-color: #1a1a1a !important;
+}
+
+/* ===== Column nav ===== */
+:is(html.dark, body.dark) .column-nav-link,
+:is(html.dark, body.dark) .column-nav-link--default {
+    color: #8a8a8a !important;
+}
+:is(html.dark, body.dark) .column-nav-link:hover,
+:is(html.dark, body.dark) .column-nav-link.is-active {
+    color: #c9a96e !important;
+}
+
+/* ===== Buttons ===== */
+:is(html.dark, body.dark) .Button.Button--primary,
+:is(html.dark, body.dark) button.Button--primary {
+    background-color: #c9a96e !important;
+    border-color: #c9a96e !important;
+    color: #0a0a0a !important;
+}
+:is(html.dark, body.dark) .Button.Button--primary:hover,
+:is(html.dark, body.dark) .Button.Button--primary.is-hover,
+:is(html.dark, body.dark) button.Button--primary:hover {
+    background-color: #d4bc8a !important;
+    border-color: #d4bc8a !important;
+    color: #0a0a0a !important;
+}
+:is(html.dark, body.dark) .Button.Button--primary:active,
+:is(html.dark, body.dark) .Button.Button--primary.is-active {
+    background-color: #b89a5e !important;
+    border-color: #b89a5e !important;
+}
+:is(html.dark, body.dark) .Button.Button--primary.is-disabled {
+    background-color: #4a4236 !important;
+    border-color: #4a4236 !important;
+    color: #8a8a8a !important;
+}
+:is(html.dark, body.dark) .Button {
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .Button:hover {
+    border-color: #c9a96e !important;
+    color: #c9a96e !important;
+}
+:is(html.dark, body.dark) .btn-on-blue,
+:is(html.dark, body.dark) .on-blue .Button {
+    background-color: transparent !important;
+    border-color: #c9a96e !important;
+    color: #c9a96e !important;
+}
+:is(html.dark, body.dark) .btn-on-blue:hover,
+:is(html.dark, body.dark) .on-blue .Button:hover {
+    background-color: rgba(201, 169, 110, 0.15) !important;
+}
+:is(html.dark, body.dark) .ButtonGroup > .Button.is-selected {
+    background-color: #c9a96e !important;
+    border-color: #c9a96e !important;
+    color: #0a0a0a !important;
+}
+
+/* ===== Form inputs ===== */
+:is(html.dark, body.dark) input[type="text"],
+:is(html.dark, body.dark) input[type="search"],
+:is(html.dark, body.dark) input[type="url"],
+:is(html.dark, body.dark) input[type="email"],
+:is(html.dark, body.dark) input[type="password"],
+:is(html.dark, body.dark) input[type="number"],
+:is(html.dark, body.dark) textarea,
+:is(html.dark, body.dark) select {
+    background-color: #252525 !important;
+    border-color: #2a2a2a !important;
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) input:focus,
+:is(html.dark, body.dark) textarea:focus,
+:is(html.dark, body.dark) select:focus {
+    border-color: #c9a96e !important;
+    box-shadow: 0 0 0 1px #c9a96e !important;
+}
+:is(html.dark, body.dark) input::placeholder,
+:is(html.dark, body.dark) textarea::placeholder {
+    color: #666666 !important;
+}
+
+/* ===== Compose panel ===== */
+:is(html.dark, body.dark) .compose-header {
+    background-color: #1e1e1e !important;
+    border-bottom-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .compose-title,
+:is(html.dark, body.dark) .compose-title-text {
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .compose-content {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .compose-text-container,
+:is(html.dark, body.dark) .compose-text {
+    background-color: #252525 !important;
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .compose-reply-tweet {
+    background-color: #1a1a1a !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .compose-message-account {
+    background-color: #1e1e1e !important;
+}
+:is(html.dark, body.dark) .tweet-detail-wrapper .compose-text-container,
+:is(html.dark, body.dark) .tweet-detail-wrapper .js-reply-info-container,
+:is(html.dark, body.dark) .tweet-detail-wrapper .other-replies,
+:is(html.dark, body.dark) .tweet-detail-wrapper .other-replies-link,
+:is(html.dark, body.dark) .tweet-detail-wrapper .compose-text,
+:is(html.dark, body.dark) .tweet-detail-wrapper .js-compose-text {
+    background-color: #1a1a1a !important;
+    color: #8f8f8f !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .tweet-detail-wrapper .js-progress-circle,
+:is(html.dark, body.dark) .tweet-detail-wrapper .stroke-twitter-blue {
+    stroke: #8f8f8f !important;
+}
+:is(html.dark, body.dark) .tweet-detail-wrapper .js-inline-compose-close .icon,
+:is(html.dark, body.dark) .tweet-detail-wrapper .js-inline-compose-pop .icon,
+:is(html.dark, body.dark) .tweet-detail-wrapper .color-twitter-white {
+    color: #8f8f8f !important;
+}
+
+/* ===== Dropdown menus ===== */
+:is(html.dark, body.dark) .dropdown-menu {
+    background-color: #1e1e1e !important;
+    border-color: #2a2a2a !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}
+:is(html.dark, body.dark) .dropdown-menu li > a,
+:is(html.dark, body.dark) .dropdown-menu li > button {
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .dropdown-menu li > a:hover,
+:is(html.dark, body.dark) .dropdown-menu li > button:hover {
+    background-color: #252525 !important;
+    color: #c9a96e !important;
+}
+
+/* ===== Popover ===== */
+:is(html.dark, body.dark) .popover {
+    background-color: #1e1e1e !important;
+    border-color: #2a2a2a !important;
+}
+
+/* ===== Drawer ===== */
+:is(html.dark, body.dark) .drawer {
+    background-color: #141414 !important;
+    border-left-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .drawer .drawer-header {
+    background-color: #1e1e1e !important;
+    border-bottom-color: #2a2a2a !important;
+}
+
+/* ===== Modal ===== */
+:is(html.dark, body.dark) .mdl {
+    background-color: #141414 !important;
+    border-color: #2a2a2a !important;
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .mdl-header {
+    background-color: #1e1e1e !important;
+    border-bottom-color: #2a2a2a !important;
+}
+
+/* ===== Scrollbar ===== */
+:is(html.dark, body.dark) .scroll-styled-v::-webkit-scrollbar,
+:is(html.dark, body.dark) .scroll-styled-h::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+:is(html.dark, body.dark) .scroll-styled-v::-webkit-scrollbar-track,
+:is(html.dark, body.dark) .scroll-styled-h::-webkit-scrollbar-track {
+    background: #141414 !important;
+}
+:is(html.dark, body.dark) .scroll-styled-v::-webkit-scrollbar-thumb,
+:is(html.dark, body.dark) .scroll-styled-h::-webkit-scrollbar-thumb {
+    background-color: #2a2a2a !important;
+    border-radius: 4px !important;
+}
+:is(html.dark, body.dark) .scroll-styled-v::-webkit-scrollbar-thumb:hover,
+:is(html.dark, body.dark) .scroll-styled-h::-webkit-scrollbar-thumb:hover {
+    background-color: #3a3a3a !important;
+}
+:is(html.dark, body.dark) .column-scroller::-webkit-scrollbar,
+:is(html.dark, body.dark) .scroll-v::-webkit-scrollbar,
+:is(html.dark, body.dark) .js-column-nav-list .js-int-scroller::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+:is(html.dark, body.dark) .column-scroller::-webkit-scrollbar-track,
+:is(html.dark, body.dark) .scroll-v::-webkit-scrollbar-track,
+:is(html.dark, body.dark) .js-column-nav-list .js-int-scroller::-webkit-scrollbar-track {
+    background: #141414 !important;
+}
+:is(html.dark, body.dark) .column-scroller::-webkit-scrollbar-thumb,
+:is(html.dark, body.dark) .scroll-v::-webkit-scrollbar-thumb,
+:is(html.dark, body.dark) .js-column-nav-list .js-int-scroller::-webkit-scrollbar-thumb {
+    background-color: #2a2a2a !important;
+    border-radius: 4px !important;
+}
+:is(html.dark, body.dark) .column-scroller::-webkit-scrollbar-thumb:hover,
+:is(html.dark, body.dark) .scroll-v::-webkit-scrollbar-thumb:hover,
+:is(html.dark, body.dark) .js-column-nav-list .js-int-scroller::-webkit-scrollbar-thumb:hover {
+    background-color: #3a3a3a !important;
+}
+
+/* ===== Progress bars ===== */
+:is(html.dark, body.dark) .ProgressBar {
+    background-color: #252525 !important;
+}
+:is(html.dark, body.dark) .ProgressBar--blue::-webkit-progress-value,
+:is(html.dark, body.dark) .ProgressBar--blue::-moz-progress-bar {
+    background-color: #c9a96e !important;
+}
+
+/* ===== Tweet actions — RT / Like ===== */
+:is(html.dark, body.dark) .icon-retweet-color,
+:is(html.dark, body.dark) .tweet-action.is-selected .icon-retweet,
+:is(html.dark, body.dark) .icon-retweet-filled {
+    color: #5a8a6a !important;
+}
+:is(html.dark, body.dark) .tweet-action:hover .icon-retweet {
+    color: #5a8a6a !important;
+}
+:is(html.dark, body.dark) .icon-favorite-color,
+:is(html.dark, body.dark) .icon-heart-filled,
+:is(html.dark, body.dark) .tweet-action.is-selected .icon-favorite,
+:is(html.dark, body.dark) .tweet-action.is-selected .icon-heart {
+    color: #b05a6a !important;
+}
+:is(html.dark, body.dark) .tweet-action:hover .icon-favorite,
+:is(html.dark, body.dark) .tweet-action:hover .icon-heart {
+    color: #b05a6a !important;
+}
+
+/* ===== Utility class overrides ===== */
+:is(html.dark, body.dark) .bg-color-twitter-blue {
+    background-color: #c9a96e !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-deep-blue {
+    background-color: #b89a5e !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-medium-blue {
+    background-color: #d4bc8a !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-midnight-dark-gray {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-midnight-darkest-gray {
+    background-color: #0a0a0a !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-lightest-gray {
+    background-color: #1e1e1e !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-light-gray {
+    background-color: #252525 !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-red {
+    background-color: #b05a6a !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-white {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .hover-bg-color-twitter-faint-blue:hover {
+    background-color: rgba(201, 169, 110, 0.1) !important;
+}
+
+/* ===== Borders ===== */
+:is(html.dark, body.dark) .border-color-twitter-dark-gray,
+:is(html.dark, body.dark) .brdr-b--dark-gray,
+:is(html.dark, body.dark) .brdr-t--dark-gray {
+    border-color: #2a2a2a !important;
+}
+
+/* ===== Inverted states on blue ===== */
+:is(html.dark, body.dark) .is-inverted-dark {
+    background-color: #141414 !important;
+    color: #e8e8e8 !important;
+}
+
+/* ===== Tabs ===== */
+:is(html.dark, body.dark) .js-tab-action.is-active {
+    border-bottom-color: #c9a96e !important;
+    color: #c9a96e !important;
+}
+
+/* ===== Notification badge ===== */
+:is(html.dark, body.dark) .icon-badge {
+    background-color: #c9a96e !important;
+    color: #0a0a0a !important;
+}
+
+/* ===== Search ===== */
+:is(html.dark, body.dark) .column-header .column-header-search input {
+    background-color: #252525 !important;
+    border-color: #2a2a2a !important;
+    color: #e8e8e8 !important;
+}
+:is(html.dark, body.dark) .column-header .column-header-search input:focus {
+    border-color: #c9a96e !important;
+}
+
+/* ===== Column detail panel ===== */
+:is(html.dark, body.dark) .column-detail {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .column-detail .column-header {
+    background-color: #1e1e1e !important;
+}
+
+/* ===== Settings / Account panel ===== */
+:is(html.dark, body.dark) .app-settings,
+:is(html.dark, body.dark) .app-settings-content {
+    background-color: #141414 !important;
+    color: #e8e8e8 !important;
+}
+
+/* ===== Media preview ===== */
+:is(html.dark, body.dark) .media-preview,
+:is(html.dark, body.dark) .media-image {
+    border-color: #2a2a2a !important;
+}
+
+/* ===== Tooltip ===== */
+:is(html.dark, body.dark) .tooltip-inner {
+    background-color: #252525 !important;
+    color: #e8e8e8 !important;
+}
+
+/* ===== Shared articles / URL cards ===== */
+:is(html.dark, body.dark) .url-ext,
+:is(html.dark, body.dark) .url-ext:link,
+:is(html.dark, body.dark) .url-ext:visited,
+:is(html.dark, body.dark) .tweet-text a,
+:is(html.dark, body.dark) .tweet-text a:link,
+:is(html.dark, body.dark) .tweet-text a:visited,
+:is(html.dark, body.dark) .js-card-container a,
+:is(html.dark, body.dark) .js-card-container a:link,
+:is(html.dark, body.dark) .js-card-container a:visited,
+:is(html.dark, body.dark) .js-card-container .link-complex-target,
+:is(html.dark, body.dark) .hw-card-container a,
+:is(html.dark, body.dark) .hw-card-container a:hover,
+:is(html.dark, body.dark) .hw-card-container a:visited,
+:is(html.dark, body.dark) .txt-mute .js-card-container a:not(:hover):not(:focus),
+:is(html.dark, body.dark) .card-holder .color-twitter-blue,
+:is(html.dark, body.dark) .tweet .color-twitter-blue {
+    color: #8a8a8a !important;
+}
+
+/* ===== Account summary link ===== */
+:is(html.dark, body.dark) .account-link:hover .fullname {
+    color: #c9a96e !important;
+}
+
+/* ===== Column selector / header controls ===== */
+:is(html.dark, body.dark) .column-header-link,
+:is(html.dark, body.dark) .column-settings-link,
+:is(html.dark, body.dark) .column-header-link:link,
+:is(html.dark, body.dark) .column-header-link:visited,
+:is(html.dark, body.dark) .app-nav-link,
+:is(html.dark, body.dark) .app-nav-tab,
+:is(html.dark, body.dark) .app-nav-link:link,
+:is(html.dark, body.dark) .app-nav-link:visited,
+:is(html.dark, body.dark) .app-nav-tab:link,
+:is(html.dark, body.dark) .app-nav-tab:visited,
+:is(html.dark, body.dark) .app-nav-link .icon,
+:is(html.dark, body.dark) .app-nav-tab .icon,
+:is(html.dark, body.dark) .app-nav-link .Icon,
+:is(html.dark, body.dark) .app-nav-tab .Icon {
+    color: #8a8a8a !important;
+}
+
+/* ===== Left column list (non-focus / non-hover) ===== */
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:not(:hover):not(:focus),
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:not(:hover):not(:focus):visited,
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:not(:hover):not(:focus) .icon,
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:not(:hover):not(:focus) .Icon,
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:not(:hover):not(:focus) .column-heading,
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:not(:hover):not(:focus) .attribution,
+:is(html.dark, body.dark) .js-column-nav-list .app-nav-link:not(:hover):not(:focus),
+:is(html.dark, body.dark) .js-column-nav-list .app-nav-link:not(:hover):not(:focus) .icon,
+:is(html.dark, body.dark) .js-column-nav-list .app-nav-link:not(:hover):not(:focus) .Icon,
+:is(html.dark, body.dark) .js-column-nav-list .app-nav-link:not(:hover):not(:focus) .app-nav-link-text {
+    color: #8f8f8f !important;
+}
+
+/* ===== Left column list backgrounds ===== */
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-item {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:hover,
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link:focus {
+    background-color: #1a1a1a !important;
+}
+:is(html.dark, body.dark) .js-column-nav-list .column-nav-link.is-selected {
+    background-color: #1e1e1e !important;
+}
+
+/* ===== Left compose button ===== */
+:is(html.dark, body.dark) .app-header .tweet-button,
+:is(html.dark, body.dark) .app-header .attach-compose-buttons .tweet-button,
+:is(html.dark, body.dark) .attach-compose-buttons .Button.tweet-button,
+:is(html.dark, body.dark) .attach-compose-buttons button.tweet-button,
+:is(html.dark, body.dark) .attach-compose-buttons input.tweet-button[type="button"] {
+    background-color: #141414 !important;
+    border-color: #2a2a2a !important;
+    color: #8f8f8f !important;
+}
+:is(html.dark, body.dark) .app-header .tweet-button:hover,
+:is(html.dark, body.dark) .app-header .tweet-button:focus,
+:is(html.dark, body.dark) .app-header .attach-compose-buttons .tweet-button:hover,
+:is(html.dark, body.dark) .app-header .attach-compose-buttons .tweet-button:focus {
+    background-color: #1a1a1a !important;
+    color: #c9a96e !important;
+}
+:is(html.dark, body.dark) .app-header .tweet-button:active,
+:is(html.dark, body.dark) .app-header .attach-compose-buttons .tweet-button:active {
+    background-color: #1e1e1e !important;
+}
+
+/* ===== Column info row (e.g. Trends for @user) ===== */
+:is(html.dark, body.dark) .column-message {
+    background-color: #141414 !important;
+    color: #8f8f8f !important;
+    border-bottom-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .column-message .color-twitter-darker-gray,
+:is(html.dark, body.dark) .column-message .dark-only--color-twitter-gray,
+:is(html.dark, body.dark) .column-message .icon,
+:is(html.dark, body.dark) .column-message .Icon {
+    color: #8f8f8f !important;
+}
+
+/* ===== Global blue-tone neutralization ===== */
+:is(html.dark, body.dark) .color-twitter-blue,
+:is(html.dark, body.dark) .color-twitter-dark-black,
+:is(html.dark, body.dark) .color-twitter-darker-gray,
+:is(html.dark, body.dark) .color-twitter-dark-gray,
+:is(html.dark, body.dark) .color-twitter-gray,
+:is(html.dark, body.dark) .dark-only--color-twitter-gray {
+    color: #8f8f8f !important;
+}
+:is(html.dark, body.dark) .bg-color-twitter-blue,
+:is(html.dark, body.dark) .bg-color-twitter-medium-blue,
+:is(html.dark, body.dark) .bg-color-twitter-deep-blue {
+    background-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .border-color-twitter-blue {
+    border-color: #3a3a3a !important;
+}
+:is(html.dark, body.dark) .more-tweets-glow {
+    background-color: #2a2a2a !important;
+    background: radial-gradient(
+        ellipse farthest-corner at 50% 100%,
+        #3a3a3a 0,
+        #2a2a2a 35%,
+        rgba(0, 0, 0, 0) 75%
+    ) !important;
+}
+
+/* ===== Scrollbar full override ===== */
+:is(html.dark, body.dark) .column-scroller,
+:is(html.dark, body.dark) .scroll-v,
+:is(html.dark, body.dark) .scroll-styled-v,
+:is(html.dark, body.dark) .scroll-alt,
+:is(html.dark, body.dark) .antiscroll-inner,
+:is(html.dark, body.dark) .Dropdown-menuItemList--withScrollbarY {
+    scrollbar-color: #3a3a3a #141414 !important;
+}
+:is(html.dark, body.dark) .scroll-alt::-webkit-scrollbar-track,
+:is(html.dark, body.dark) .scroll-conversation::-webkit-scrollbar-track,
+:is(html.dark, body.dark) .is-inverted-dark .column-scroller::-webkit-scrollbar-track {
+    background: #141414 !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .scroll-alt::-webkit-scrollbar-thumb,
+:is(html.dark, body.dark) .scroll-conversation::-webkit-scrollbar-thumb,
+:is(html.dark, body.dark) .is-inverted-dark .column-scroller::-webkit-scrollbar-thumb {
+    background-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .scroll-alt::-webkit-scrollbar-thumb:hover,
+:is(html.dark, body.dark) .scroll-conversation::-webkit-scrollbar-thumb:hover,
+:is(html.dark, body.dark) .is-inverted-dark .column-scroller::-webkit-scrollbar-thumb:hover {
+    background-color: #3a3a3a !important;
+}
+:is(html.dark, body.dark) .antiscroll-scrollbar {
+    background: rgba(58, 58, 58, 0.75) !important;
+}
+
+/* ===== Detail view + logo strip neutralization ===== */
+:is(html.dark, body.dark) .app-title {
+    background-color: #141414 !important;
+    border-top: 1px solid #2a2a2a !important;
+}
+:is(html.dark, body.dark) .tweet-detail-wrapper,
+:is(html.dark, body.dark) .tweet-detail-wrapper .stream-item,
+:is(html.dark, body.dark) .js-tweet.tweet-detail {
+    background-color: #141414 !important;
+}
+:is(html.dark, body.dark) .tweet-stats,
+:is(html.dark, body.dark) .tweet-detail-actions {
+    border-top-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .tweet-stat,
+:is(html.dark, body.dark) .stat-word,
+:is(html.dark, body.dark) .tweet-detail-action {
+    color: #8f8f8f !important;
+}
+:is(html.dark, body.dark) .detail-view-inline,
+:is(html.dark, body.dark) .scroll-conversation {
+    background-color: #141414 !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .detail-view-inline-text {
+    background-color: #1a1a1a !important;
+    border-color: #2a2a2a !important;
+    color: #8f8f8f !important;
+}
+:is(html.dark, body.dark) .inline-reply,
+:is(html.dark, body.dark) .tweet-detail-reply {
+    background-color: #141414 !important;
+    color: #8f8f8f !important;
+    border-color: #2a2a2a !important;
+}
+:is(html.dark, body.dark) .reply-triangle {
+    border-bottom-color: #141414 !important;
+}
