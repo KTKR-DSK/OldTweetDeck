@@ -1,6 +1,7 @@
 let solveId = 0;
 let solveCallbacks = {};
 let solverErrored = false;
+let ready = false;
 
 let solverIframe = document.createElement('iframe');
 solverIframe.style.position = 'absolute';
@@ -10,7 +11,7 @@ solverIframe.style.border = 'none';
 solverIframe.style.opacity = 0;
 solverIframe.style.pointerEvents = 'none';
 solverIframe.tabIndex = -1;
-solverIframe.src = "https://tweetdeck.dimden.dev/solver.html?1"; // check source code of that page to make sure its safe if u dont trust it
+solverIframe.src = "https://tweetdeck.dimden.dev/solver.html?4"; // check source code of that page to make sure its safe if u dont trust it
 fetch(solverIframe.src).catch(() => {
     console.error("Cannot load solver iframe");
     solverErrored = true;
@@ -95,19 +96,31 @@ function solveChallenge(path, method) {
                 solverIframe.contentWindow.postMessage({ action: 'solve', id, path, method }, '*');
                 setTimeout(() => {
                     if(solveCallbacks[id]) {
+                        // try again
+                        solverIframe.contentWindow.postMessage({ action: 'solve', id, path, method }, '*');
+                    }
+                }, 5000);
+                setTimeout(() => {
+                    if(solveCallbacks[id]) {
                         solveCallbacks[id].reject('Solver timed out');
                         delete solveCallbacks[id];
                     }
-                }, 300);
+                }, 20000);
             });
         } else {
             solverIframe.contentWindow.postMessage({ action: 'solve', id, path, method }, '*');
             setTimeout(() => {
                 if(solveCallbacks[id]) {
+                    // try again
+                    solverIframe.contentWindow.postMessage({ action: 'solve', id, path, method }, '*');
+                }
+            }, 5000);
+            setTimeout(() => {
+                if(solveCallbacks[id]) {
                     solveCallbacks[id].reject('Solver timed out');
                     delete solveCallbacks[id];
                 }
-            }, 500);
+            }, 20000);
         }
     });
 }
@@ -134,6 +147,8 @@ window.addEventListener('message', e => {
             solveCallbacks[id].reject('Solver errored');
             delete solveCallbacks[id];
         }
+    } else if(data.action === 'ready') {
+        ready = true;
     }
 });
 
@@ -147,7 +162,7 @@ window.addEventListener('message', e => {
                 localStorage.device_id = uuidV4();
             }
         } catch(e) {
-            console.error(`Error during device id generation:`, e);
+            console.warn(`Error during device id generation:`, e);
             if(!localStorage.device_id) {
                 localStorage.device_id = uuidV4();
             }
@@ -157,20 +172,36 @@ window.addEventListener('message', e => {
         let dom = new DOMParser().parseFromString(homepageData, 'text/html');
         let anims = Array.from(dom.querySelectorAll('svg[id^="loading-x"]')).map(svg => svg.outerHTML);
 
+        let vendorCode = homepageData.match(/vendor.(\w+).js"/)[1];
         let challengeCode = homepageData.match(/"ondemand.s":"(\w+)"/)[1];
         let challengeData = await fetch(`https://abs.twimg.com/responsive-web/client-web/ondemand.s.${challengeCode}a.js`).then(res => res.text());
+        console.log(`Successfully fetched challenge data (${challengeCode} / ${challengeData.length})`);
+        let vendorData = await fetch(`https://abs.twimg.com/responsive-web/client-web/vendor.${vendorCode}.js`).then(res => res.text());
+        console.log(`Successfully fetched vendor data (${vendorCode} / ${vendorData.length})`);
 
         function sendInit() {
+            console.log('Sending init');
             solverIframe.contentWindow.postMessage({
                 action: 'init',
                 challenge: challengeData,
+                vendor: vendorData,
                 anims,
                 verificationCode: dom.querySelector('meta[name="twitter-site-verification"]').content,
             }, '*');
         }
         if(solverIframe.contentWindow) {
             sendInit();
+            setTimeout(() => {
+                if(!ready) {
+                    sendInit();
+                }
+            }, 2500);
         } else {
+            setTimeout(() => {
+                if(!ready) {
+                    sendInit();
+                }
+            }, 2500);
             solverIframe.addEventListener('load', () => sendInit());
         }
     } catch (e) {

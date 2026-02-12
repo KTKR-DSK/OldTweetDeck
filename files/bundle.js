@@ -4894,7 +4894,7 @@ document.body.addEventListener("click", function (e) {
                 return (e.isContributor() && TD.storage.store.getTwitterLoginAccount()) || e;
             }
 
-            function p(e, t) {
+            function addActAsUserId(e, t) {
                 return t.isContributor()
                     ? (0, r.default)({}, e, {
                           "x-act-as-user-id": t.getUserID(),
@@ -4912,7 +4912,7 @@ document.body.addEventListener("click", function (e) {
 
             function v(e, t) {
                 return [
-                    p,
+                    addActAsUserId,
                     function (e, t) {
                         var n = i(t);
                         return (0, r.default)({}, e, {
@@ -4948,7 +4948,7 @@ document.body.addEventListener("click", function (e) {
                     );
                 };
             }
-            e.maybeAddContributorsHeaders = p;
+            e.maybeAddContributorsHeaders = addActAsUserId;
             var b,
                 y,
                 _ = 0.5;
@@ -5090,7 +5090,7 @@ document.body.addEventListener("click", function (e) {
                 (e.upload = function (t, i) {
                     return TD.decider.hasAccessLevel("mediaUpload", "USE_SRU")
                         ? (function (e, t) {
-                              var i = g(p({}, t)),
+                              var i = g(addActAsUserId({}, t)),
                                   n = TD.config.twitter_upload_base + "/1.1/media/upload.json",
                                   s = new m.default(e, {
                                       uploadUrl: n,
@@ -5152,7 +5152,7 @@ document.body.addEventListener("click", function (e) {
                               );
                           })(t, i)
                         : (function (t, i) {
-                              var n = g(p({}, i)),
+                              var n = g(addActAsUserId({}, i)),
                                   s = new FormData();
                               s.append("media", t);
                               var r = TD.config.twitter_upload_base + "/1.1/media/upload.json",
@@ -5254,7 +5254,7 @@ document.body.addEventListener("click", function (e) {
                     ("GET" !== t.method && "DELETE" !== t.method) ||
                         ((t.url = TD.net.util.addURLParameters(t.url, t.params)), delete t.params),
                         (t.body = t.params);
-                    var n = p(t.headers, t.account);
+                    var n = addActAsUserId(t.headers, t.account);
                     if (
                         n["x-act-as-user-id"] &&
                         t.url &&
@@ -7116,8 +7116,9 @@ document.body.addEventListener("click", function (e) {
                       default: e,
                   };
         }
+        // var p = TD.config.twitter_api_base + "/graphql",
         var p = TD.config.twitter_api_base + "/graphql",
-            g = ["UpdateGryphonOnboardingState"];
+        g = [""];
 
         function v(e) {
             var t = e.query,
@@ -7760,8 +7761,8 @@ document.body.addEventListener("click", function (e) {
                                             break;
                                         case 12:
                                             (t.prev = 12),
-                                                (t.t0 = t.catch(2)),
-                                                (0, l.metric)("api:hashflags:getFlags:failure");
+                                                (t.t0 = t.catch(2));
+                                                // (0, l.metric)("api:hashflags:getFlags:failure");
                                         case 15:
                                         case "end":
                                             return t.stop();
@@ -17675,7 +17676,7 @@ document.body.addEventListener("click", function (e) {
         "use strict";
         i.r(t),
             (t.default =
-                `<span class="inline-block">Using OldTweetDeck by <a href="https://dimden.dev/" target="_blank">dimden</a></span> <span class="aria-hidden">&middot;</span> <a href="https://dimden.dev/donate" target="_blank">{{_i}}Please Donate!{{/i}}</a> <span class="aria-hidden">&middot;</span> <span class="inline-block">{{version}}</span>
+                `<span class="inline-block">Using OldTweetDeck by <a href="https://dimden.dev/" target="_blank">dimden</a></span> <span class="aria-hidden">&middot;</span> <a href="https://patreon.com/OldTweetDeck" target="_blank">{{_i}}Please Donate!{{/i}}</a> <span class="aria-hidden">&middot;</span> <span class="inline-block">{{version}}</span>
 				<br><br>
 				<button class="Button--primary" onclick="importState()">
 					<span class="label">
@@ -18248,7 +18249,7 @@ document.body.addEventListener("click", function (e) {
         "use strict";
         i.r(t),
             (t.default =
-                '<div class="js-login-error form-message form-error-message error txt-center padding-al margin-bxl {{^message}}is-hidden{{/message}}"> <p class="js-login-error-message">{{message}} More info: <a style="color:lightpink;font-weight:bold" href="https://twitter.com/dimden" target="_blank">@dimden</a></p> </div>');
+                '<div class="js-login-error form-message form-error-message error txt-center padding-al margin-bxl {{^message}}is-hidden{{/message}}"> <p class="js-login-error-message">{{message}}</div>');
     },
     function (e, t, i) {
         "use strict";
@@ -18260,7 +18261,7 @@ document.body.addEventListener("click", function (e) {
         "use strict";
         i.r(t),
             (t.default =
-                '<section class="js-login-form form-login startflow-panel-rounded" data-auth-type="twitter" aria-labelledby="login-form-title"> <h2 class="form-legend padding-axl" id="login-form-title"> {{_i}}Log in with your Twitter account{{/i}} </h2> <div class="margin-a--16"> {{> login/login_form_message}} <a href="{{twitterLoginUrl}}" class="Button Button--primary block txt-size--18 txt-center"> Log in </a> </div> <div class="divider-bar margin-v--0 margin-h--16"></div> <div class="padding-axl"> {{_i}}Donate to OldTweetDeck developer:{{/i}} <a href="https://dimden.dev/donate" class="startflow-link" rel="url" target="_blank">{{_i}}dimden.dev/donate{{/i}} &raquo;</a></p> </div> </section>');
+                '<section class="js-login-form form-login startflow-panel-rounded" data-auth-type="twitter" aria-labelledby="login-form-title"> <h2 class="form-legend padding-axl" id="login-form-title"> {{_i}}Log in with your Twitter account{{/i}} </h2> <div class="margin-a--16"> {{> login/login_form_message}} <a href="{{twitterLoginUrl}}" class="Button Button--primary block txt-size--18 txt-center"> Log in </a> </div> <div class="divider-bar margin-v--0 margin-h--16"></div> <div class="padding-axl"> {{_i}}Donate to OldTweetDeck developer:{{/i}} <a href="https://patreon.com/OldTweetDeck" class="startflow-link" rel="url" target="_blank">{{_i}}patreon.com/OldTweetDeck{{/i}} &raquo;</a></p> </div> </section>');
     },
     function (e, t, i) {
         "use strict";
@@ -18704,7 +18705,7 @@ document.body.addEventListener("click", function (e) {
         "use strict";
         i.r(t),
             (t.default =
-                '<fieldset id="general_settings"> <legend>{{_i}}General Settings{{/i}}</legend> <div class="control-group"> <div> <i class="js-streaming-updates icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="streaming-updates"></i> <span class="margin-l--4">{{_i}}Stream Tweets in realtime{{/i}}</span> </div> <div> <i class="js-show-startup-notifications icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="show-startup-notifications"></i> <span class="margin-l--4">{{_i}}Show notifications on startup{{/i}}</span> </div> <div> <i class="js-display-sensitive-media icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="display-sensitive-media"></i> <span class="margin-l--4">{{_i}}Display media that may contain sensitive content{{/i}}</span> </div> <div> <i class="js-auto-play-gifs icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="auto-play-gifs"></i> <span class="margin-l--4">{{_i}}Autoplay GIFs{{/i}}</span> </div> <div> <i class="js-enable-rate-limit-bypass icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="enable-rate-limit-bypass"></i> <span class="margin-l--4">{{_i}}Enable rate limit bypass (OldTweetDeck){{/i}}</span> </div> <div> <i class="js-show-all-replies-in-home icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="show-all-replies-in-home"></i> <span class="margin-l--4">{{_i}}Show all replies in home column (OldTweetDeck){{/i}}</span> </div> <div class="divider-bar"></div> <div class="cf"> <div class="obj-left js-theme"> <label class="fixed-width-label txt-uppercase touch-larger-label"><b>{{_i}}Theme{{/i}}</b></label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-theme-radio touch-larger-label" name="theme" value="dark"> {{_i}}Dark{{/i}} </label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-theme-radio touch-larger-label" name="theme" value="light"> {{_i}}Light{{/i}} </label> </div> <div class="obj-left js-column-size"> <label class="fixed-width-label txt-uppercase touch-larger-label"><b>{{_i}}Columns{{/i}}</b></label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-column-size-radio touch-larger-label" name="column-size" value="narrow"> {{_i}}Narrow{{/i}} </label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-column-size-radio touch-larger-label" name="column-size" value="medium"> {{_i}}Medium{{/i}} </label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-column-size-radio touch-larger-label" name="column-size" value="wide"> {{_i}}Wide{{/i}} </label> </div> <div class="obj-left js-font-size"> <label class="fixed-width-label txt-uppercase touch-larger-label"><b>{{_i}}Font size{{/i}}</b></label> <label class="txt-size--12 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="smallest"> {{_i}}Smallest{{/i}} </label> <label class="txt-size--13 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="small"> {{_i}}Small{{/i}} </label> <label class="txt-size--14 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="medium"> {{_i}}Medium{{/i}} </label> <label class="txt-size--15 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="large"> {{_i}}Large{{/i}} </label> <label class="txt-size--16 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="largest"> {{_i}}Largest{{/i}} </label> </div> </div> </div> <div class="mdl-links"> {{> app_links}} </div> </fieldset>');
+                '<fieldset id="general_settings"> <legend>{{_i}}General Settings{{/i}}</legend> <div class="control-group"> <div> <i class="js-streaming-updates icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="streaming-updates"></i> <span class="margin-l--4">{{_i}}Stream Tweets in realtime{{/i}}</span> </div> <div> <i class="js-show-startup-notifications icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="show-startup-notifications"></i> <span class="margin-l--4">{{_i}}Show notifications on startup{{/i}}</span> </div> <div> <i class="js-display-sensitive-media icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="display-sensitive-media"></i> <span class="margin-l--4">{{_i}}Display media that may contain sensitive content{{/i}}</span> </div> <div> <i class="js-auto-play-gifs icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="auto-play-gifs"></i> <span class="margin-l--4">{{_i}}Autoplay GIFs{{/i}}</span> </div> <div> <i class="js-enable-auto-expand icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="enable-auto-expand"></i> <span class="margin-l--4">{{_i}}Enable tweet auto expand (OldTweetDeck){{/i}}</span> </div> <div> <i class="js-show-all-replies-in-home icon icon-small icon-toggle-off color-twitter-blue js-toggle-switch is-actionable align-top" id="show-all-replies-in-home"></i> <span class="margin-l--4">{{_i}}Show all replies in home column (OldTweetDeck){{/i}}</span> </div> <div class="divider-bar"></div> <div class="cf"> <div class="obj-left js-theme"> <label class="fixed-width-label txt-uppercase touch-larger-label"><b>{{_i}}Theme{{/i}}</b></label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-theme-radio touch-larger-label" name="theme" value="dark"> {{_i}}Dark{{/i}} </label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-theme-radio touch-larger-label" name="theme" value="light"> {{_i}}Light{{/i}} </label> </div> <div class="obj-left js-column-size"> <label class="fixed-width-label txt-uppercase touch-larger-label"><b>{{_i}}Columns{{/i}}</b></label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-column-size-radio touch-larger-label" name="column-size" value="narrow"> {{_i}}Narrow{{/i}} </label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-column-size-radio touch-larger-label" name="column-size" value="medium"> {{_i}}Medium{{/i}} </label> <label class="fixed-width-label radio"> <input type="radio" class="js-settings-radio js-column-size-radio touch-larger-label" name="column-size" value="wide"> {{_i}}Wide{{/i}} </label> </div> <div class="obj-left js-font-size"> <label class="fixed-width-label txt-uppercase touch-larger-label"><b>{{_i}}Font size{{/i}}</b></label> <label class="txt-size--12 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="smallest"> {{_i}}Smallest{{/i}} </label> <label class="txt-size--13 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="small"> {{_i}}Small{{/i}} </label> <label class="txt-size--14 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="medium"> {{_i}}Medium{{/i}} </label> <label class="txt-size--15 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="large"> {{_i}}Large{{/i}} </label> <label class="txt-size--16 fixed-width-label radio"> <input type="radio" class="js-settings-radio js-font-size-radio" name="font-size" value="largest"> {{_i}}Largest{{/i}} </label> </div> </div> </div> <div class="mdl-links"> {{> app_links}} </div> </fieldset>');
     },
     function (e, t, i) {
         "use strict";
@@ -22192,6 +22193,7 @@ document.body.addEventListener("click", function (e) {
                     return window.location.host;
                 },
                 registerEventHandlers: function () {
+                    return;
                     var e = this,
                         t = (0, s.default)(document);
                     if (
@@ -22263,6 +22265,7 @@ document.body.addEventListener("click", function (e) {
             (this.scribeContext = {}),
                 (this.scribeData = {}),
                 (this.scribe = function (t, i) {
+                    return;
                     var a = e || window.scribeTransport;
                     if (!a)
                         throw new Error(
@@ -28152,7 +28155,7 @@ document.body.addEventListener("click", function (e) {
                 startupNotificationsInputId: "show-startup-notifications",
                 sensitiveContentInputId: "display-sensitive-media",
                 autoplayGifsInputId: "auto-play-gifs",
-                enableRateLimitBypassInputId: "enable-rate-limit-bypass",
+                enableAutoExpandInputId: "enable-auto-expand",
                 showAllRepliesInHomeInputId: "show-all-replies-in-home",
                 toggleSwitchSelector: ".js-toggle-switch",
                 radioInputSelector: ".js-settings-radio",
@@ -28166,7 +28169,7 @@ document.body.addEventListener("click", function (e) {
                 showNotificationsSelector: ".js-show-startup-notifications",
                 displaySensitiveContentSelector: ".js-display-sensitive-media",
                 autoplayGifsSelector: ".js-auto-play-gifs",
-                enableRateLimitBypassSelector: ".js-enable-rate-limit-bypass",
+                enableAutoExpandSelector: ".js-enable-auto-expand",
                 showAllRepliesInHomeSelector: ".js-show-all-replies-in-home",
             }),
                 (this.componentDidInitialize = function () {
@@ -28188,8 +28191,8 @@ document.body.addEventListener("click", function (e) {
                             "displaySensitiveContentSelector"
                         )),
                         (this.$autoplayGifs = this.select("autoplayGifsSelector")),
-                        (this.$enableRateLimitBypass = this.select(
-                            "enableRateLimitBypassSelector"
+                        (this.$enableAutoExpand = this.select(
+                            "enableAutoExpandSelector"
                         )),
                         (this.$showAllRepliesInHome = this.select("showAllRepliesInHomeSelector"));
                 }),
@@ -28199,7 +28202,7 @@ document.body.addEventListener("click", function (e) {
                         showStartupNotifications: TD.settings.getShowStartupNotifications(),
                         displaySensitiveMedia: TD.settings.getDisplaySensitiveMedia(),
                         autoplayGifs: TD.settings.getAutoPlayGifs(),
-                        enableRateLimitBypass: localStorage.OTDuseDifferentToken === "1",
+                        enableAutoExpand: localStorage.OTDenableAutoExpand === "1",
                         showAllRepliesInHome: localStorage.OTDshowAllRepliesInHome === "1",
                         theme: TD.settings.getTheme(),
                         columnWidth: TD.settings.getColumnWidth(),
@@ -28234,10 +28237,10 @@ document.body.addEventListener("click", function (e) {
                                     autoplayGifs: i,
                                 });
                             break;
-                        case this.attr.enableRateLimitBypassInputId:
-                            (localStorage.OTDuseDifferentToken = i ? "1" : "0"),
+                        case this.attr.enableAutoExpandInputId:
+                            (localStorage.OTDenableAutoExpand = i ? "1" : "0"),
                                 this.mergeState({
-                                    enableRateLimitBypass: i,
+                                    enableAutoExpand: i,
                                 });
                             break;
                         case this.attr.showAllRepliesInHomeInputId:
@@ -28289,14 +28292,14 @@ document.body.addEventListener("click", function (e) {
                         this.$autoplayGifs
                             .removeClass(s ? "icon-toggle-off" : "icon-toggle-on")
                             .addClass(s ? "icon-toggle-on" : "icon-toggle-off"),
-                        this.$enableRateLimitBypass
+                        this.$enableAutoExpand
                             .removeClass(
-                                localStorage.OTDuseDifferentToken === "1"
+                                localStorage.OTDenableAutoExpand === "1"
                                     ? "icon-toggle-off"
                                     : "icon-toggle-on"
                             )
                             .addClass(
-                                localStorage.OTDuseDifferentToken === "1"
+                                localStorage.OTDenableAutoExpand === "1"
                                     ? "icon-toggle-on"
                                     : "icon-toggle-off"
                             ),
@@ -32777,11 +32780,11 @@ document.body.addEventListener("click", function (e) {
                 m = null;
             (h.getDecider = function (e) {
                 var t;
-                if(window.chrome && window.chrome.runtime && window.chrome.runtime.getURL) {
-                    t = `${chrome.runtime.getURL('/files/decider.json')}?identifier=` + e;
-                } else {
+                // if(window.chrome && window.chrome.runtime && window.chrome.runtime.getURL) {
+                //     t = `${chrome.runtime.getURL('/files/decider.json')}?identifier=` + e;
+                // } else {
                     t = "https://tweetdeck.twitter.com/decider?identifier=" + e;
-                }
+                // }
                 return h.drequest(
                     t,
                     {
@@ -33727,7 +33730,7 @@ document.body.addEventListener("click", function (e) {
                             objects: t,
                             deltaIds: i,
                             respHeaders: {
-                                "x-td-mtime": e.xhr.getResponseHeader("x-td-mtime"),
+                                "x-td-mtime": e.xhr.getResponseHeader("x-td-mtime") ?? new Date().toISOString(),
                             },
                             pushid: n,
                         };
@@ -33743,7 +33746,7 @@ document.body.addEventListener("click", function (e) {
                         s.assert(null !== e, "Δid must not be null");
                     });
                 var l,
-                    d = n["x-td-mtime"];
+                    d = n["x-td-mtime"] ?? new Date().toISOString();
                 s.assert(d, "require x-td-mtime header in object PUT");
                 for (var h, m, f = this, p = 0; p < e.length; p++)
                     (l = e[p]),
@@ -33806,7 +33809,7 @@ document.body.addEventListener("click", function (e) {
                             object: i,
                             deltaId: n,
                             respHeaders: {
-                                "x-td-mtime": e.xhr.getResponseHeader("x-td-mtime"),
+                                "x-td-mtime": e.xhr.getResponseHeader("x-td-mtime") ?? new Date().toISOString(),
                             },
                         };
                     });
@@ -33823,7 +33826,7 @@ document.body.addEventListener("click", function (e) {
                         (a = t.newRemoteState(e.body));
                 else {
                     s.assert((0, c.default)(e), "don't know how to handle response");
-                    var l = n["x-td-mtime"];
+                    var l = n["x-td-mtime"] ?? new Date().toISOString();
                     s.assert(l, "require x-td-mtime header in object PUT"),
                         s.verboseLog("_processTSResult", t, e),
                         (a = t.commit(i, l));
@@ -34268,7 +34271,7 @@ document.body.addEventListener("click", function (e) {
                         return (
                             a.addCallback(function () {
                                 s.stateLog("createNewClient resp headers; ", i);
-                                var r = i["x-td-mtime"];
+                                var r = i["x-td-mtime"] ?? new Date().toISOString();
                                 return (
                                     s.assert(r, "require x-td-mtime header in client POST"),
                                     (t.mtime = r),
@@ -34307,7 +34310,7 @@ document.body.addEventListener("click", function (e) {
                             );
                         return (
                             t.addCallbackWith(this, function (t) {
-                                var i = t.xhr.getResponseHeader("x-td-mtime");
+                                var i = t.xhr.getResponseHeader("x-td-mtime") ?? new Date().toISOString();
                                 return (
                                     s.assert(i, "require x-td-mtime header in client POST"),
                                     (e.mtime = i),
@@ -35525,7 +35528,7 @@ document.body.addEventListener("click", function (e) {
                             TD.sync.controller.reset(),
                             TD.storage.Store.flushWebstorage();
                         var c = (0, d.default)(
-                                "Sorry, something went wrong. Please try again later."
+                                "Error initializing TweetDeck: " + String(s)
                             ),
                             u = s.message ? "(" + s.message + ")" : "";
                         return (
@@ -36657,6 +36660,7 @@ document.body.addEventListener("click", function (e) {
                             case "analytics":
                             case "whatshappening":
                                 i = P.makeColumn(t.type, []);
+                                break;
                             case "bookmarks":
                                 (n = e.columnController.getBookmarksFeeds(o)),
                                     (i = P.makeColumn("bookmarks", n));
@@ -37086,6 +37090,9 @@ document.body.addEventListener("click", function (e) {
                         );
                     }),
                     (this.updateAccountFromVerifySuccess = function (e, t) {
+                        if(!t || !t.screen_name) {
+                            throw new Error("No user found for some reason. Visiting x.com usually fixes this.");
+                        }
                         e.setUsername(t.screen_name),
                             e.setName(t.name),
                             e.setProfileImageURL(t.profile_image_url_https),
@@ -42941,13 +42948,13 @@ document.body.addEventListener("click", function (e) {
                 "",
             ].join("/")),
             (TD.services.TwitterClient.prototype.URT_BASE_URL = TD.config.twitter_api_base + "/2/"),
-            (TD.services.TwitterClient.prototype.makeTwitterCall = function (e, t, i, n, s, r, a) {
+            (TD.services.TwitterClient.prototype.makeTwitterCall = function (url, params, method, processor, s, r, feedType) {
                 (s = s || function () {}), (r = r || function () {});
-                var o = this.request(e, {
-                    method: i,
-                    params: t,
-                    processor: n,
-                    feedType: a,
+                var o = this.request(url, {
+                    method: method,
+                    params: params,
+                    processor: processor,
+                    feedType: feedType,
                 });
                 return (
                     o.addCallbacks(
@@ -43164,23 +43171,28 @@ document.body.addEventListener("click", function (e) {
                 return t;
             }),
             (TD.services.TwitterClient.prototype.processActions = function (e) {
-                for (var t = [], i = 0; i < e.length; i++) {
-                    var n = e[i];
-                    if (
-                        n.action === TD.services.TwitterAction.LIST_MEMBER_ADDED &&
-                        n.targets_size > 1 &&
-                        n.target_objects_size > 1
-                    ) {
-                        var s = new TD.services.TwitterActionMultiListMemberAdded(
-                            this.oauth.account
-                        );
-                        s.fromJSONObject(n, [n], !1), t.push(s);
-                    } else {
-                        var r = TD.services.TwitterAction.processRESTAction(n, this.oauth.account);
-                        r && (t = t.concat(r));
+                try {
+                    for (var t = [], i = 0; i < e.length; i++) {
+                        var n = e[i];
+                        if (
+                            n.action === TD.services.TwitterAction.LIST_MEMBER_ADDED &&
+                            n.targets_size > 1 &&
+                            n.target_objects_size > 1
+                        ) {
+                            var s = new TD.services.TwitterActionMultiListMemberAdded(
+                                this.oauth.account
+                            );
+                            s.fromJSONObject(n, [n], !1), t.push(s);
+                        } else {
+                            var r = TD.services.TwitterAction.processRESTAction(n, this.oauth.account);
+                            r && (t = t.concat(r));
+                        }
                     }
+                    return t;
+                } catch(e) {
+                    console.error(`Error processing actions`, e);
+                    return [];
                 }
-                return t;
             }),
             (TD.services.TwitterClient.prototype.showUser = function (e, t, i, n) {
                 var s = {};
@@ -48439,6 +48451,7 @@ document.body.addEventListener("click", function (e) {
                     }
                 }),
                 (this.handleAccessDenied = function (e, t) {
+                    return;
                     var i = t.account.getKey();
                     if (!this.state.badAccounts[i]) {
                         var n = this.addBadAccountFromEventData(this.state, t);
@@ -48447,6 +48460,7 @@ document.body.addEventListener("click", function (e) {
                     }
                 }),
                 (this.handleStateChanged = function (e) {
+                    return;
                     var t = this.getBadAccount(e);
                     t
                         ? this.trigger("uiShowAccountAccessDeniedBanner", t.eventData)
@@ -53327,14 +53341,18 @@ document.body.addEventListener("click", function (e) {
     },
     function (e, t) {
         e.exports = {
-            queryId: "AASdaEBxY4wb30U8CMOBSw",
-            operationName: "FetchAccountSyncState",
+            // queryId: "AASdaEBxY4wb30U8CMOBSw",
+            // operationName: "FetchAccountSyncState",
+            queryId: "",
+            operationName: "",
         };
     },
     function (e, t) {
         e.exports = {
-            queryId: "LpUitdk4MbdxT65XWXcHxg",
-            operationName: "UpdateGryphonOnboardingState",
+            // queryId: "LpUitdk4MbdxT65XWXcHxg",
+            // operationName: "UpdateGryphonOnboardingState",
+            queryId: "",
+            operationName: "",
         };
     },
     function (e, t, i) {
@@ -63941,6 +63959,7 @@ document.body.addEventListener("click", function (e) {
                                 };
 
                             return function (s) {
+                                return;
                                 var r,
                                     a = Math.abs(s.originalEvent.wheelDeltaX),
                                     o = Math.abs(s.originalEvent.wheelDeltaY),
@@ -67592,6 +67611,7 @@ document.body.addEventListener("click", function (e) {
                         this.trigger("uiMessageBannerContainerHidden");
                     }),
                     (this.showAccessDeniedMessage = function (e, t) {
+                        return;
                         var i;
                         (i = t.isLoginAccount
                             ? this.getLoginAccountAccessDeniedMessageData(t)

@@ -1,6 +1,6 @@
 ﻿# OldTweetDeck
 
-Returns old TweetDeck, for free!  
+Returns old TweetDeck!  
 
 > [!NOTE]
 > Since Twitter made likes private, the Likes tab aren't loading anymore.  
@@ -77,10 +77,14 @@ Update to latest OldTweetDeck version.
 
 See https://github.com/dimdenGD/OldTweetDeck/issues/259#issuecomment-2281786253 for a workaround.
 
-#### User or Search column aren't loading for me.
+#### Some column isn't loading for me.
 
 You're getting rate limited. They'll comeback after some time.
 
 #### Likes tab aren't loading for me.
 
 This can not be fixed. Since Twitter made likes private, the API to retrieve likes is gone.
+
+
+
+
