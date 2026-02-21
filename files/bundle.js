@@ -7117,7 +7117,7 @@ document.body.addEventListener("click", function (e) {
                   };
         }
         // var p = TD.config.twitter_api_base + "/graphql",
-        var p = TD.config.twitter_api_base + "/graphql",
+        var urlPath = TD.config.twitter_api_base + "/graphql",
         g = [""];
 
         function v(e) {
@@ -7153,21 +7153,21 @@ document.body.addEventListener("click", function (e) {
 
         function T(e, t) {
             var i = e.query,
-                n = e.queryId,
-                s = e.operationName,
-                a = e.variables,
-                l = void 0,
-                c = void 0,
+                queryId = e.queryId,
+                operationName = e.operationName,
+                variables = e.variables,
+                fullPath = void 0,
+                method = void 0,
                 u = {},
                 h = (0, o.getValueForFeatureFlag)("graphql_detailed_url_format_enabled");
             return (
-                a && (u.variables = (0, r.default)(a)),
-                h && n && s
-                    ? ((l = p + "/" + n + "/" + s), (c = "GET"))
-                    : ((l = p), (c = "POST"), (u.query = i), (u.queryId = n)),
-                g.includes(s) && (c = "POST"),
-                (0, d.fetched)(l, {
-                    method: c,
+                variables && (u.variables = (0, r.default)(variables)),
+                h && queryId && operationName
+                    ? ((fullPath = urlPath + "/" + queryId + "/" + operationName), (method = "GET"))
+                    : ((fullPath = urlPath + "/"), (method = "POST"), (u.query = i), (u.queryId = queryId)),
+                g.includes(operationName) && (method = "POST"),
+                (0, d.fetched)(fullPath, {
+                    method: method,
                     headers: {
                         "content-type": "application/json",
                     },
